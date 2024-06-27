@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book My Limo Trip - Luxury Limousine Services</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHgsNcZgzgueySlC6eR8bbfMswphbrLec&libraries=places&callback=initMap&loading=async" async defer></script>
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="fleet.html">Our Fleet</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul class="auth-links">
+                    <li id="welcome-message" style="display: none;">Welcome, <span id="user-name"></span></li>
+                    <li id="login-link"><a href="login.html">Log In</a></li>
+                    <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+                    <li id="logout-link" style="display: none;"><a href="#" onclick="logout()">Sign Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Elevate Your Journey</h1>
+                <p>Experience unparalleled luxury with Bay Area's premier limousine service</p>
+                <a href="#booking" class="cta-button">Reserve Your Limo</a>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="booking">
+            <h2>Book Your Limo</h2>
+            <div class="booking-container">
+                <div class="form-container">
+                    <form id="booking-form">
+                        <!-- Step 1: Ride Info -->
+                        <div class="step" id="step1">
+                            <h3>Step 1: Ride Info</h3>
+                            <div class="form-group">
+                                <label for="service-type">Select Service Type</label>
+                                <select id="service-type" required>
+                                    <option value="from-airport">From Airport</option>
+                                    <option value="to-airport">To Airport</option>
+                                    <option value="point-to-point">Point to Point</option>
+                                    <option value="hourly-as-directed">Hourly/ As Directed</option>
+                                    <option value="other">Other</option>
+                                    <option value="custom-itinerary">Custom Itinerary</option>
+                                    <option value="birthday-party">Birthday Party</option>
+                                    <option value="charter">Charter</option>
+                                    <option value="hourly">Hourly</option>
+                                    <option value="prom">Prom</option>
+                                    <option value="tour">TOUR</option>
+                                    <option value="transfer">Transfer</option>
+                                    <option value="roundtrip">Roundtrip</option>
+                                    <option value="executive-briefing">Executive Briefing</option>
+                                    <option value="shuttling">Shuttling</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pickup-date">Pick Up Date</label>
+                                <input type="date" id="pickup-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pickup-time">Pick Up Time</label>
+                                <input type="time" id="pickup-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pickup-location">Pick Up Location</label>
+                                <input type="text" id="pickup-location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dropoff-location">Drop Off Location</label>
+                                <input type="text" id="dropoff-location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passengers">Number of Passengers</label>
+                                <input type="number" id="passengers" min="1" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="luggage">Luggage Count</label>
+                                <input type="number" id="luggage" min="0" max="100" required>
+                            </div>
+                            <button type="button" id="next-step1" class="btn btn-next">Next</button>
+
+                        </div>
+
+                        <!-- Step 2: Select Vehicle -->
+                        <div class="step" id="step2" style="display: none;">
+                            <h3>Step 2: Select Vehicle</h3>
+                            <div id="vehicle-options">
+                                <!-- Dynamically load vehicle options here -->
+                            </div>
+                            <button type="button" id="prev-step2" class="btn">Previous</button>
+                            <button type="button" id="next-step2" class="btn">Next</button>
+                        </div>
+
+                        <!-- Step 3: User Details -->
+                        <div class="step" id="step3" style="display: none;">
+                            <h3>Step 3: User Details</h3>
+                            <div class="login-options">
+                                <div class="login-form">
+                                    <h4>Log in to your account</h4>
+                                    <input type="email" id="login-email" placeholder="Email Address">
+                                    <input type="password" id="login-password" placeholder="Password">
+                                    <button type="button" id="login-button" class="btn">Log In</button>
+                                    <a href="#" id="forgot-password">Forgot password?</a>
+                                    <p>Don't have an account? <a href="signup.html" id="register-link">Register Now</a></p>
+                                </div>
+                                <div class="guest-form">
+                                    <h4>Continue as guest</h4>
+                                    <input type="text" id="guest-firstname" placeholder="First Name" required>
+                                    <input type="text" id="guest-lastname" placeholder="Last Name" required>
+                                    <input type="tel" id="guest-phone" placeholder="Phone Number" required>
+                                    <input type="email" id="guest-email" placeholder="Email Address" required>
+                                    <button type="button" id="guest-continue" class="btn">Continue as guest</button>
+                                </div>
+                            </div>
+                            <button type="button" id="prev-step3" class="btn">Previous</button>
+                            <button type="button" id="next-step3" class="btn">Next</button>
+                        </div>
+
+                        <!-- Step 4: Payment ERASED -->
+
+                        <div id="booking-map" style="height: 800px;"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+
+        <!-- Footer content -->
+    </footer>
+
+    <script src="/js/script.js"></script>
+
+    <script>
+        // Initialize Google Maps
+        function initMap() {
+            const defaultLocation = { lat: 37.7749, lng: -122.4194 }; // Default to San Francisco
+
+            const map = new google.maps.Map(document.getElementById('booking-map'), {
+                center: defaultLocation,
+                zoom: 12
+            });
+
+            // Autocomplete for Pick Up Location
+            const pickupInput = document.getElementById('pickup-location');
+            const pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
+            pickupAutocomplete.bindTo('bounds', map);
+
+            // Autocomplete for Drop Off Location
+            const dropoffInput = document.getElementById('dropoff-location');
+            const dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput);
+            dropoffAutocomplete.bindTo('bounds', map);
+
+            const marker = new google.maps.marker.AdvancedMarkerElement({
+                map: map,
+                position: defaultLocation,
+                title: "Location"
+            });
+
+            autocomplete.addListener('place_changed', () => {
+                const place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    window.alert("No details available for input: '" + place.name + "'");
+                    return;
+                }
+
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);
+                }
+
+                marker.position = place.geometry.location;
+                marker.map = map;
+            });
+        }
+
+
+    
+        // Set minimum date for date picker to today
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('pickup-date');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+    
+            // Step navigation logic
+            const steps = Array.from(document.querySelectorAll('.step'));
+            let currentStep = 0;
+    
+            function showStep(step) {
+                steps.forEach((s, index) => {
+                    s.style.display = index === step ? 'block' : 'none';
+                });
+            }
+    
+            document.getElementById('next-step1').addEventListener('click', () => {
+                currentStep++;
+                showStep(currentStep);
+            });
+    
+            document.getElementById('prev-step2').addEventListener('click', () => {
+                currentStep--;
+                showStep(currentStep);
+            });
+    
+            document.getElementById('next-step2').addEventListener('click', () => {
+                currentStep++;
+                showStep(currentStep);
+            });
+    
+            document.getElementById('prev-step3').addEventListener('click', () => {
+                currentStep--;
+                showStep(currentStep);
+            });
+    
+            document.getElementById('next-step3').addEventListener('click', () => {
+                currentStep++;
+                showStep(currentStep);
+            });
+    
+            document.getElementById('prev-step4').addEventListener('click', () => {
+                currentStep--;
+                showStep(currentStep);
+            });
+    
+            showStep(currentStep);
+        });
+    </script>
+    

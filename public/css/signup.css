@@ -1,0 +1,147 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.nav-left {
+    display: flex;
+}
+
+.nav-right {
+    display: flex;
+}
+
+.nav-links, .auth-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li, .auth-links li {
+    margin: 0 15px;
+}
+
+.nav-links a, .auth-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .auth-links a:hover {
+    color: #d4af37;
+}
+
+.signup-container {
+    display: flex;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 80%;
+    max-width: 900px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin: 40px auto;
+}
+
+.signup-left {
+    flex: 1;
+    padding: 40px;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-left h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.signup-left p {
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+.signup-left img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.signup-right {
+    flex: 1;
+    padding: 40px;
+    background-color: #1a1a1a;
+}
+
+.signup-right h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #d4af37;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #b5942f;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+}
